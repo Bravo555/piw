@@ -17,24 +17,36 @@
             background-size: cover;
         }
 
+        h1 {
+            font-size: 3rem;
+            line-height: 1.25;
+            margin: 0;
+        }
+
         .subtitle {
             font-weight: bold;
             font-size: 1.5em;
         }
 
-        .flex-hoz {
-            height: 100vh;
-            width: 1280px;
+        .wrapper {
             margin: auto;
+        }
+
+        .flex-hoz {
             display: flex;
             flex-direction: row;
-
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            align-content: center;
+
+            flex-wrap: wrap;
         }
 
         .portrait {
+            margin: 5rem;
+            position: sticky;
+        }
+
+        .portrait img {
             height: 400px;
         }
 
@@ -43,52 +55,69 @@
         }
 
         .content {
-            padding: 4rem;
+            margin: 2rem;
+            padding: 2rem 4rem;
             border-radius: 2rem;
 
             background-color: rgba(255, 255, 255, 0.6);
+            text-align: justify;
         }
 
         .content:before {
             opacity: 0.2;
         }
+
+        .photos > img {
+            height: 400px;
+        }
     </style>
 </head>
 <body>
-    <div class="flex-hoz">
-        <div class="flex-item"><img class="portrait" src="img/zhong-xina.jpg" alt="Zhong Xina"></div>
+    <div class="flex-hoz wrapper">
+        <div class="flex-item portrait">
+            <a href="https://knowyourmeme.com/memes/john-xina"><img src="img/zhong-xina.jpg" alt="Zhong Xina"></a>
+        </div>
 
         <div class="flex-item content">
-            <h1>Zhong Xina Homepage</h1>
-            <span class="subtitle">Student of Beijing CCP University</span>
+            <h1>Zhong Xina</h1>
+            <span class="subtitle">Student Uniwersytetu Myśli Xi Jinpinga w Pekinie</span>
 
-            <p>Dzień dobry Chiny! Nazywam się Zhong Xina i studiuję na Uniwersytecie myśli socjalistycznej Xi Jinpinga w
-            Pekinie. Bardzo lubię <em>bing chilling</em> ale, w porównaniu do <em>bing chilling</em> <em>Szybkich i
-            wściekłych 9</em> lubię najbardziej.</p>
+            <hr>
+
+            <p>Dzień dobry Chiny! Nazywam się Zhong Xina i studiuję na Uniwersytecie Myśli Xi Jinpinga w Pekinie. Bardzo
+            lubię <strong>bing chilling</strong>, ale w porównaniu do <strong>bing chilling</strong>,
+            <em>Szybkich i wściekłych 9</em> lubię najbardziej.</p>
 
             <p>Kiedyś pracowałem dla zgniłego zachodu, ale teraz służę Chinom i Chińskiemu ludowi! Mój ulubiony polityk
             to Xi Jinping. Niech żyją Chiny!</p>
 
-            <p>In Fast and Furious 9 I had many, many interviews. In one of them I made a mistake. Everyone asked me if
-            I can use Chinese. People at Fast &amp; Furious 9 gave me lots of interview information. Uh, I made a
-            mistake. I have to say right now It's so so so so important. I love and respect China and Chinese people.
-            I'm so so sorry for my mistake.</p>
-        
+            <p>W <em>Szybkich i Wściekłych 9</em> udzieliłem wiele, wiele wywiadów. W jednym z nich zrobiłem błąd.
+            Wszyscy pytali mnie czy mogę mówić po chińsku. Ludzie z <em>Szybkich i Wściekłych 9</em> przekazali mi wiele
+            informacji. Uh, zrobiłem błąd. Muszę teraz powiedzieć że to bardzo bardzo bardzo bardzo ważne. Kocham i
+            szanuję Chiny i Chińczyków. Bardzo bardzo bardzo przepraszam za swój błąd.</p>
+
+            <hr>
+
             <h2>Zajęcia w tym semestrze</h2>
             <ul>
-                <li>Jedzenie <em>bing chilling</em></li>
+                <li>Jedzenie <strong>bing chilling</strong></li>
                 <li>Zdobywanie punktów kredytu społecznego</li>
                 <li>Zaprzeczanie istnieniu niepodległego i suwerennego Tajwanu</li>
                 <li>Reklamowanie filmu <em>Szybcy i wściekli 9</em></li>
                 <li>Nauka marnowania wody</li>
                 <li>Wychowanie do życia w rodzinie z jednym dzieckiem</li>
                 <li>Zajęcia z przedsiębiorczości w bańce nieruchomościowej</li>
-                <li>Prowadzenie obozu edukacyjnego dla mniejszości Ujgurskiej</li>
-                <li>WF - Przegrywanie olimpiady zimowej</li>
+                <li>Prowadzenie obozu edukacyjnego dla Ujgurskich dzieci</li>
                 <li>Wiedza o posłuszeństwie społecznym</li>
                 <li>Plastyka propagandowa</li>
                 <li>Literatura partyjna - Myśl Xi Jinpinga</li>
             </ul>
+
+            <h2>Moje ulubione zdjęcia</h2>
+            <div class="flex-hoz photos">
+                <img src="img/bing-chilling.jpg" alt="bing chilling">
+                <img src="img/apology.jpg" alt="przeprosiny">
+            </div>
         </div>
     </div>
 
