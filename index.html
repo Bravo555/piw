@@ -23,6 +23,15 @@
             margin: 0;
         }
 
+        img {
+            max-width: 100%;
+        }
+
+        p {
+            max-width: 50rem;
+            text-align: justify;
+        }
+
         .subtitle {
             font-weight: bold;
             font-size: 1.5em;
@@ -43,15 +52,10 @@
 
         .portrait {
             margin: 4rem;
-            position: sticky;
         }
 
         .portrait img {
-            height: 400px;
-        }
-
-        p {
-            max-width: 50rem;
+            max-height: 400px;
         }
 
         .content {
@@ -60,7 +64,18 @@
             border-radius: 2rem;
 
             background-color: rgba(255, 255, 255, 0.6);
-            text-align: justify;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                margin: 1rem;
+                padding: 1rem 2rem;
+                border-radius: 2rem;
+            }
+
+            .portrait {
+                margin: 2rem;
+            }
         }
 
         .content:before {
@@ -68,8 +83,10 @@
         }
 
         .photos > img {
-            height: 400px;
+            max-height: 400px;
         }
+
+
     </style>
 </head>
 <body>
