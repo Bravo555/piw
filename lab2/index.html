@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIW Lab 2</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: auto;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        #todo-list {
+            margin-top: 2rem;
+            list-style-type: none;
+        }
+
+        .todo-item {
+            max-width: 30rem;
+            margin: 1em 0;
+        }
+
+        .todo-item-text {
+            margin: 0 1em;
+        }
+
+        .todo-item-text-done {
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .todo-item-done-button {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TODO App</h1>
+    <input type="text" name="" id="todo-text">
+    <button id="todo-submit">Dodaj</button>
+    <ul id="todo-list">
+        <li class="todo-item">
+        </li>
+    </ul>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <script>
+        'use strict';
+
+        let todoBin;
+
+        // TODO: sanitize text
+        function addTodoItem(text) {
+            const todoList = document.querySelector('#todo-list');
+
+            let deleteButton = $('<button class="todo-item-delete">X</button>');
+            deleteButton.click((e) => {
+                if (!confirm('Delete this element? You can restore it using Ctrl+Z, but only one!'))
+                    return;
+                todoBin = text;
+                e.target.parentElement.remove()
+            });
+
+            let todoText = document.createElement('span');
+            todoText.className = 'todo-item-text';
+            todoText.innerText = text;
+
+            let completedDate = document.createElement('span');
+            completedDate.className = 'todo-completed-date';
+
+            let button = document.createElement('button');
+            button.innerText = 'Done';
+            button.classList.add('todo-item-done-button');
+            button.addEventListener('click', (e) =>
+                toggleTodoItem(e.target.parentElement));
+
+            let item = document.createElement('li');
+
+            $(item).append(deleteButton);
+
+            item.className = 'todo-item';
+            item.append(todoText, button, completedDate);
+            todoList.appendChild(item);
+        }
+
+        function toggleTodoItem(item) {
+            let todoTextEl = item.querySelector('.todo-item-text');
+            todoTextEl.classList.toggle('todo-item-text-done');
+            let completedDate = item.querySelector('.todo-completed-date');
+            if (todoTextEl.classList.contains('todo-item-text-done')) {
+                completedDate.innerText = (new Date()).toLocaleString('pl-PL');
+                item.querySelector('.todo-item-done-button').innerText = 'Undone';
+            } else {
+                completedDate.innerText = '';
+                item.querySelector('.todo-item-done-button').innerText = 'Done';
+            }
+        }
+
+        const textbox = document.querySelector('#todo-text');
+        document.querySelector('#todo-submit')
+            .addEventListener('click', (e) => addTodoItem(textbox.value));
+        document.querySelectorAll('.todo-item-done-button').forEach((b) =>
+            b.addEventListener('click', (e) => toggleTodoItem(e.target.parentElement)));
+
+        $(document).keydown((e) => {
+            if (e.key === 'z' && e.ctrlKey && todoBin) {
+                addTodoItem(todoBin);
+                todoBin = null;
+            }
+        })
+
+        addTodoItem('test todo');
+    </script>
+</body>
+
+</html>
