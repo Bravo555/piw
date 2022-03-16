@@ -23,7 +23,7 @@ function addTodoItem(text, listName) {
     deleteButton.click((e) => {
         if (!confirm('Delete this element? You can restore it using Ctrl+Z, but only one!'))
             return;
-        todoBin = text;
+        todoBin = { text, listName };
         e.target.parentElement.remove();
     });
 
@@ -83,7 +83,7 @@ function addList(listName) {
 
 const deleteItemJquery = (e) => {
     if (e.key === 'z' && e.ctrlKey && todoBin) {
-        addTodoItem(todoBin);
+        addTodoItem(todoBin.text, todoBin.listName);
         todoBin = null;
     }
 };
