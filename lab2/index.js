@@ -17,7 +17,7 @@ function loadListsNamesToSelect() {
 }
 
 function addTodoItem(text, listName) {
-    const todoList = document.querySelector(`.${listName ? listName : 'todo-list-main'}`);
+    const todoList = document.querySelector(`.${listName || 'todo-list-main'}`);
 
     let deleteButton = $('<button class="todo-item-delete">X</button>');
     deleteButton.click((e) => {
