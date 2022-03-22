@@ -17,6 +17,10 @@ function loadListsNamesToSelect() {
 }
 
 function addTodoItem(text, listName) {
+    if (text.trim() === '') {
+        return;
+    }
+
     const todoList = document.querySelector(`.${listName || 'todo-list-main'}`);
 
     let deleteButton = $('<button class="todo-item-delete">X</button>');
@@ -64,6 +68,10 @@ function toggleTodoItem(item) {
 
 let listNum = 1;
 function addList(listName) {
+    if (listName.trim() === '') {
+        return;
+    }
+
     let todos = document.createElement('ul');
     todos.className = `todo-list todo-list${listNum}`;
     listNum += 1;
