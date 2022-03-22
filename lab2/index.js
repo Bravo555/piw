@@ -17,7 +17,8 @@ function loadListsNamesToSelect() {
 }
 
 function addTodoItem(text, listName) {
-    if (text.trim() === '') {
+    text = text.trim();
+    if (text === '') {
         return;
     }
 
@@ -68,7 +69,8 @@ function toggleTodoItem(item) {
 
 let listNum = 1;
 function addList(listName) {
-    if (listName.trim() === '') {
+    listName = listName.trim();
+    if (listName === '') {
         return;
     }
 
