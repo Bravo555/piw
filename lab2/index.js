@@ -59,7 +59,7 @@ function toggleTodoItem(item) {
     todoTextEl.classList.toggle('todo-item-text-done');
     let completedDate = item.querySelector('.todo-completed-date');
     if (todoTextEl.classList.contains('todo-item-text-done')) {
-        completedDate.innerText = (new Date()).toLocaleString('pl-PL');
+        completedDate.innerText = (new Date()).toLocaleString();
         item.querySelector('.todo-item-done-button').innerText = 'Undone';
     } else {
         completedDate.innerText = '';
