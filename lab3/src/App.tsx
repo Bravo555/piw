@@ -22,7 +22,7 @@ const App = () => {
     <div className='App'>
       <h1>Student (debil)</h1>
 
-      <Router basename='lab3/build'>
+      <Router basename='piw/lab3/build'>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/add">Dodaj debila</Link>
