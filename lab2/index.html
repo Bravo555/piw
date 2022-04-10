@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIW Lab 2</title>
+
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #222;
+                color: #ddd;
+            }
+
+            a {
+                color: rgb(116, 169, 246);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: auto;
+        }
+
+        .wrapper {
+            margin: 1rem 2rem;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        .todo-list,
+        .todo-lists {
+            margin-top: 2rem;
+            list-style-type: none;
+        }
+
+        .todo-item {
+            max-width: 30rem;
+            margin: 1em 0;
+        }
+
+        .todo-item-text {
+            margin: 0 1em;
+        }
+
+        .todo-item-text-done {
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .todo-item-done-button {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <a href="../">&lt; Back</a>
+        <h1>TODO App</h1>
+
+        <div>
+            <input type="text" id="todo-text">
+            <select id="list-select">
+            </select>
+            <button id="todo-submit">Dodaj</button>
+        </div>
+
+        <ul class="todo-lists">
+            <li>
+                <h2>Lista główna</h2>
+                <ul class="todo-list todo-list-main"></ul>
+            </li>
+        </ul>
+
+        <h2>Dodaj listę</h2>
+        <div>
+            <input type="text" id="add-list-textbox">
+            <button id="add-list-button">Dodaj</button>
+        </div>
+
+    </div>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
