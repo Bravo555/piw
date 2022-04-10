@@ -1,6 +1,6 @@
 {
   "name": "chimp",
-  "homepage": "piw/lab3/build",
+  "homepage": "piw/lab3",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "gh-pages": "gh-pages"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -e lab3"
   },
   "eslintConfig": {
     "extends": [
