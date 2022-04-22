@@ -27,6 +27,7 @@ jobs:
       - run: |
           cd lab3
           pwd
+      - run: pwd
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
