@@ -24,11 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - run: cd lab3
+      - run: |
+          cd lab3
+          pwd
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
           cache: 'npm'
+          cache-dependency-path: lab3/package-lock.json
       - run: |
           npm install
           npm run build
