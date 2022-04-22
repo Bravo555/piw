@@ -39,6 +39,7 @@ const Search = ({ students }: { students: { name: string, description: string, t
             && student.description.includes(description)
           ).map((student, i) => <li key={i}><StudentCard student={student} /></li>)}
       </ul>
+      {tags}
     </>
   )
 }
