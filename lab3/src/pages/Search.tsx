@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Student from './types/Student';
-import StudentCard from './StudentCard';
+import Student from '../types/Student';
+import StudentCard from '../StudentCard';
 
 const Search = ({ students }: { students: Student[] }) => {
   const [name, setName] = useState('');
@@ -22,7 +22,7 @@ const Search = ({ students }: { students: Student[] }) => {
           <label htmlFor="tags">Tags: </label>
           <input type="text" id="tags" onChange={(e) => {
             const tags = e.target.value.trim().split(',').map((tag) => tag.trim());
-            if(tags[tags.length - 1].trim() === '') tags.pop();
+            if (tags[tags.length - 1].trim() === '') tags.pop();
             setTags(tags);
           }} />
         </div>
@@ -31,7 +31,7 @@ const Search = ({ students }: { students: Student[] }) => {
           <label htmlFor="subjects">Subjects: </label>
           <input type="text" id="subjects" onChange={(e) => {
             const subjects = e.target.value.trim().split(',').map((subject) => subject.trim());
-            if(subjects[tags.length - 1].trim() === '') tags.pop();
+            if (subjects[tags.length - 1].trim() === '') tags.pop();
             setSubjects(tags);
           }} />
         </div>

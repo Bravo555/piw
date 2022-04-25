@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Route, BrowserRouter as Router, Routes, Link } from 'react-router-dom';
 import './App.css';
-import Search from './Search';
+import Search from './pages/Search';
 import Add from './pages/Add';
-import Student from './types/Student';
 import Groups from './pages/Groups';
+import Student from './types/Student';
 import Group from './types/Group';
 
 
