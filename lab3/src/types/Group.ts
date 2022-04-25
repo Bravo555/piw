@@ -1,9 +1,10 @@
 import Student from './Student';
 
 type Group = {
-    members: Student[],
+    name: string,
+    subject: string,
     size: number,
-    subject: string
+    members: Student[],
 }
 
 export default Group;

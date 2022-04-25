@@ -16,6 +16,7 @@ class Groups extends react.Component<{ groups: Group[] }, GroupsState> {
   render() {
     return (
       <div>
+        <h2>Wyszukaj:</h2>
         <div>
           <div>
             <label htmlFor="subjects">Subjects: </label>
@@ -46,6 +47,7 @@ class Groups extends react.Component<{ groups: Group[] }, GroupsState> {
               ))
             .map((group, i) => <li key={i}>
               <div className='card'>
+                <div>Nazwa: {group.name}</div>
                 <div>Przedmiot: {group.subject}</div>
                 <div>Rozmiar: {group.size}</div>
                 <div>

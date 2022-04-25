@@ -31,26 +31,29 @@ const App = () => {
 
   const groups: Group[] = [
     {
-      size: 2,
+      name: 'Rozpoznawanie sygnalizacji świetlnej',
       subject: 'Rozpoznawanie i przetwarzanie obrazów',
+      size: 2,
       members: [
         { name: 'Marcel', email: 'marcel@mguzik.eu', description: '' },
         { name: 'Miłosz', email: 'mimsowy@wp.pl', description: '' }
       ]
     },
     {
-      size: 4,
+      name: 'PACAN',
       subject: 'Projekt grupowy',
+      size: 4,
       members: [
         { name: 'Marcel', email: 'marcel@mguzik.eu', description: '' },
         { name: 'Miłosz', email: 'mimsowy@wp.pl', description: '' },
-        { name: 'Maciej', email: 'byczax@gmail.com', description: '' },
+        { name: 'Maciej', email: 'byczax@byczko.pl', description: '' },
         { name: 'Bartosz', email: 'qucker@gmail.com', description: '' },
       ]
     },
     {
+      name: 'Monada to po prostu monoid w kategorii endofunktorów',
+      subject: 'Teoria kategorii dla programistów',
       size: 6,
-      subject: 'Monad lecture',
       members: [
         { name: 'Marcel', email: 'marcel@mguzik.eu', description: '' }
       ]
