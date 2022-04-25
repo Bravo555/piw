@@ -4,16 +4,17 @@
 
 .flex-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .flex-list > li {
-  margin: 2rem;
   list-style-type: none;
 }
 
-.student-card {
+.card {
   padding: 1em;
+  margin: 2rem;
   background-color: #aaa;
   border-radius: 1em;
 }
@@ -22,6 +23,7 @@
   margin-top: 0.5em;
   padding: 0;
   display: flex;
+  justify-content: space-around;
 }
 
 .tag {

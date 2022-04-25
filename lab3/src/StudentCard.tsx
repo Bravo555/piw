@@ -1,6 +1,8 @@
+import Student from './types/Student';
+
 // its kinda verbose but meh
-const StudentCard = ({ student }: { student: { name: string, description: string, tags?: string[] } }) => (
-  <div className="student-card">
+const StudentCard = ({ student }: { student: Student }) => (
+  <div className="card">
     <div>{student.name}</div>
     <div>{student.description}</div>
     {
@@ -14,6 +16,6 @@ const StudentCard = ({ student }: { student: { name: string, description: string
         </div>) : ''
     }
   </div>
-)
+);
 
 export default StudentCard;
