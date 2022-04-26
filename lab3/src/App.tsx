@@ -70,7 +70,7 @@ const App = () => {
     <div className='App'>
       <h1>Student (debil)</h1>
 
-      <HashRouter basename='piw/lab3'>
+      <HashRouter>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/groups">Groups</Link>
