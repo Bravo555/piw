@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, BrowserRouter as Router, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link, HashRouter } from 'react-router-dom';
 import './App.css';
 import Search from './pages/Search';
 import Add from './pages/Add';
@@ -70,7 +70,7 @@ const App = () => {
     <div className='App'>
       <h1>Student (debil)</h1>
 
-      <Router basename='piw/lab3'>
+      <HashRouter basename='piw/lab3'>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/groups">Groups</Link>
@@ -92,7 +92,7 @@ const App = () => {
             }} />
           } />
         </Routes>
-      </Router>
+      </HashRouter>
 
     </div>
   );
