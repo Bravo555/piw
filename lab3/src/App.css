@@ -1,5 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+}
+
+.form {
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.form > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25em 0;
+}
+
+.selectinput {
+  display: block !important; /* oh god, here we go... */
 }
 
 .flex-list {

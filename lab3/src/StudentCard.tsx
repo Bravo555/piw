@@ -4,7 +4,7 @@ import Student from './types/Student';
 const StudentCard = ({ student }: { student: Student }) => (
   <div className="card">
     <div>{student.name}</div>
-    <div>{student.description}</div>
+    <div>{student.description || 'No description.'}</div>
     {
       student.tags ? (
         <div>

@@ -10,7 +10,7 @@ const Add = ({ addStudent }: { addStudent: (s: Student) => void }) => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="form">
       <h2>Dodaj debila:</h2>
       <div>
         <label htmlFor="name">Name: </label>

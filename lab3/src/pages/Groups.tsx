@@ -55,7 +55,7 @@ class Groups extends react.Component<{ groups: Group[] }, GroupsState> {
                   <ul>
                     {group.members.map((member, i) => <li key={i}>{member.name}</li>)}
                     {Array(Math.max(group.size - group.members.length, 0))
-                      .fill(<li key={group.members.length + i + 1}>[Wolne]</li>)}
+                      .fill(1).map((_, i) => <li key={group.members.length + i + 1}>[Wolne]</li>)}
                   </ul>
                 </div>
               </div>

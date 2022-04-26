@@ -6,8 +6,10 @@ import Add from './pages/Add';
 import Groups from './pages/Groups';
 import Student from './types/Student';
 import Group from './types/Group';
+import GroupAdd from './pages/GroupAdd';
 
 
+// TODO: remove duplicated state
 const App = () => {
   const [students, setStudents] = useState([
     { name: 'Marek', email: 'xXx_MaReK_xXx@pudelek.pl', description: 'Doin your mom, doin doin your mom!' },
@@ -18,18 +20,22 @@ const App = () => {
     {
       name: 'X Æ A-Xii', email: 'techpriest@mechanicus.terra', description: 'Even in death I serve the Omnissiah.',
       tags: ['omnissiah', 'adeptus mechanicus', 'the flesh is weak']
-    }
+    },
+    { name: 'Marcel', email: 'marcel@mguzik.eu', description: '' },
+    { name: 'Miłosz', email: 'mimsowy@wp.pl', description: '' },
+    { name: 'Maciej', email: 'byczax@byczko.pl', description: '' },
+    { name: 'Bartosz', email: 'qucker@gmail.com', description: '' },
   ]);
 
   const subjects = [
-    'Programowanie interfejsów webowych',
-    'Systemy operacyjne',
-    'Projektowanie i programowanie gier',
-    'Rozpoznawanie i przetwarzanie obrazów',
-    'Projekt grupowy'
+    { shortname: 'PIW', longname: 'Programowanie interfejsów webowych' },
+    { shortname: 'SO2', longname: 'Systemy operacyjne 2' },
+    { shortname: 'PIPG', longname: 'Projektowanie i programowanie gier' },
+    { shortname: 'RiPO', longname: 'Rozpoznawanie i przetwarzanie obrazów' },
+    { shortname: 'PZ', longname: 'Projekt zespołowy' }
   ];
 
-  const groups: Group[] = [
+  const [groups, setGroups] = useState([
     {
       name: 'Rozpoznawanie sygnalizacji świetlnej',
       subject: 'Rozpoznawanie i przetwarzanie obrazów',
@@ -58,7 +64,7 @@ const App = () => {
         { name: 'Marcel', email: 'marcel@mguzik.eu', description: '' }
       ]
     }
-  ];
+  ]);
 
   return (
     <div className='App'>
@@ -69,6 +75,7 @@ const App = () => {
           <Link to="/">Home</Link>
           <Link to="/groups">Groups</Link>
           <Link to="/add">Dodaj debila</Link>
+          <Link to="/groups/add">Dodaj grupę debili</Link>
         </nav>
 
         <Routes>
@@ -76,7 +83,12 @@ const App = () => {
           <Route path="/groups" element={<Groups groups={groups} />} />
           <Route path="/add" element={
             <Add addStudent={(student: Student) => {
-              setStudents([student, ...students]);
+              setStudents([...students, student]);
+            }} />
+          } />
+          <Route path="/groups/add" element={
+            <GroupAdd students={students} addGroup={(group: Group) => {
+              setGroups([...groups, group]);
             }} />
           } />
         </Routes>
