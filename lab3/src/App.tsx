@@ -13,21 +13,21 @@ import SendMessage from './pages/SendMessage';
 // TODO: remove duplicated state
 const App = () => {
   const [students, setStudents] = useState([
-    { id: 1, name: 'Marek', email: 'xXx_MaReK_xXx@pudelek.pl', description: 'Doin your mom, doin doin your mom!' },
+    { id: 0, name: 'Marek', email: 'xXx_MaReK_xXx@pudelek.pl', description: 'Doin your mom, doin doin your mom!' },
     {
-      id: 2,
+      id: 1,
       name: 'Basia', email: 'barbara@gmail.com', description: 'Interested in functional programming and type systems.',
       tags: ['functional programming', 'type systems', 'programming language research']
     },
     {
-      id: 3,
+      id: 2,
       name: 'X Æ A-Xii', email: 'techpriest@mechanicus.terra', description: 'Even in death I serve the Omnissiah.',
       tags: ['omnissiah', 'adeptus mechanicus', 'the flesh is weak']
     },
-    { id: 4, name: 'Marcel', email: 'marcel@mguzik.eu', description: '' },
-    { id: 5, name: 'Miłosz', email: 'mimsowy@wp.pl', description: '' },
-    { id: 6, name: 'Maciej', email: 'byczax@byczko.pl', description: '' },
-    { id: 7, name: 'Bartosz', email: 'qucker@gmail.com', description: '' },
+    { id: 3, name: 'Marcel', email: 'marcel@mguzik.eu', description: '' },
+    { id: 4, name: 'Miłosz', email: 'mimsowy@wp.pl', description: '' },
+    { id: 5, name: 'Maciej', email: 'byczax@byczko.pl', description: '' },
+    { id: 6, name: 'Bartosz', email: 'qucker@gmail.com', description: '' },
   ]);
 
   const subjects = [
@@ -40,7 +40,7 @@ const App = () => {
 
   const [groups, setGroups] = useState([
     {
-      id: 1,
+      id: 0,
       name: 'Rozpoznawanie sygnalizacji świetlnej',
       subject: 'Rozpoznawanie i przetwarzanie obrazów',
       size: 2,
@@ -50,7 +50,7 @@ const App = () => {
       ]
     },
     {
-      id: 2,
+      id: 1,
       name: 'PACAN',
       subject: 'Projekt grupowy',
       size: 4,
@@ -62,7 +62,7 @@ const App = () => {
       ]
     },
     {
-      id: 3,
+      id: 2,
       name: 'Monada to po prostu monoid w kategorii endofunktorów',
       subject: 'Teoria kategorii dla programistów',
       size: 6,
