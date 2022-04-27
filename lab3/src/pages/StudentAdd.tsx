@@ -10,8 +10,13 @@ const Add = ({ addStudent }: { addStudent: (s: Omit<Student, "id">) => void }) =
   const navigate = useNavigate();
 
   return (
-    <div className="form">
-      <h2>Dodaj debila:</h2>
+    <form className="form" onSubmit={(e) => {
+      e.preventDefault();
+      addStudent({ name, email, tags, description });
+      navigate('/');
+    }
+    }>
+      <h2>Dodaj studenta:</h2>
       <div>
         <label htmlFor="name">Name: </label>
         <input type="text" id="name" onChange={(e) => setName(e.target.value)} />
@@ -35,11 +40,8 @@ const Add = ({ addStudent }: { addStudent: (s: Omit<Student, "id">) => void }) =
         <textarea id="description" onChange={(e) => setDescription(e.target.value)}></textarea>
       </div>
 
-      <button onClick={() => {
-        addStudent({ name, email, tags, description });
-        navigate('/');
-      }}>Dodaj studenta(debila)</button>
-    </div>
+      <input type="submit" value="Dodaj studenta" />
+    </form>
   );
 };
 

@@ -61,7 +61,7 @@ const Add = ({ addGroup, students }: { addGroup: (s: Omit<Group, "id">) => void,
           <Select isMulti options={selectOptions} onChange={handleMembersChange} />
         </div>
 
-        <input type="submit" value="Dodaj grupę (debili)" />
+        <input type="submit" value="Dodaj grupę" />
       </form>
     </>
   );
