@@ -1,4 +1,5 @@
-import Student from './types/Student';
+import { Link } from 'react-router-dom';
+import Student from '../types/Student';
 
 // its kinda verbose but meh
 const StudentCard = ({ student }: { student: Student }) => (
@@ -15,6 +16,8 @@ const StudentCard = ({ student }: { student: Student }) => (
           </ul>
         </div>) : ''
     }
+    <hr />
+    <Link to={`/sendmessage/student/${student.id}`}>Wyślij wiadomość</Link>
   </div>
 );
 

@@ -1,4 +1,5 @@
 import react from 'react';
+import { Link } from 'react-router-dom';
 import Group from '../types/Group';
 
 type GroupsState = {
@@ -12,12 +13,11 @@ class Groups extends react.Component<{ groups: Group[] }, GroupsState> {
     size: 0
   };
 
-
   render() {
     return (
-      <div>
+      <>
         <h2>Wyszukaj:</h2>
-        <div>
+        <div className="form">
           <div>
             <label htmlFor="subjects">Subjects: </label>
             <input type="text" id="subjects" onChange={(e) =>
@@ -58,11 +58,13 @@ class Groups extends react.Component<{ groups: Group[] }, GroupsState> {
                       .fill(1).map((_, i) => <li key={group.members.length + i + 1}>[Wolne]</li>)}
                   </ul>
                 </div>
+                <hr />
+                <Link to={`/sendmessage/group/${group.id}`}>Wyślij wiadomość</Link>
               </div>
             </li>
             )}
         </ul>
-      </div>
+      </>
     );
   }
 }

@@ -21,10 +21,15 @@
   display: block !important; /* oh god, here we go... */
 }
 
+.message_textbox {
+  width: 100%;
+}
+
 .flex-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 0;
 }
 
 .flex-list > li {
@@ -33,9 +38,21 @@
 
 .card {
   padding: 1em;
-  margin: 2rem;
+  margin: 1rem;
   background-color: #aaa;
   border-radius: 1em;
+}
+
+.card > a {
+  text-decoration: none;
+}
+
+.card > a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  margin: 2rem;
 }
 
 .tags {

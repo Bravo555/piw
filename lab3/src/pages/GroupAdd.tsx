@@ -4,7 +4,7 @@ import Select, { MultiValue } from 'react-select';
 import Group from '../types/Group';
 import Student from '../types/Student';
 
-const Add = ({ addGroup, students }: { addGroup: (s: Group) => void, students: Student[] }) => {
+const Add = ({ addGroup, students }: { addGroup: (s: Omit<Group, "id">) => void, students: Student[] }) => {
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
   const [size, setSize] = useState(0);

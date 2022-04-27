@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Student from '../types/Student';
 
-const Add = ({ addStudent }: { addStudent: (s: Student) => void }) => {
+const Add = ({ addStudent }: { addStudent: (s: Omit<Student, "id">) => void }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tags, setTags] = useState<string[]>([]);

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Student from '../types/Student';
-import StudentCard from '../StudentCard';
+import StudentCard from '../components/StudentCard';
 
-const Search = ({ students }: { students: Student[] }) => {
+const Students = ({ students }: { students: Student[] }) => {
   const [name, setName] = useState('');
   const [tags, setTags] = useState<string[]>([]);
   const [subjects, setSubjects] = useState<string[]>([]);
@@ -12,7 +12,7 @@ const Search = ({ students }: { students: Student[] }) => {
     <>
       <h2>Search:</h2>
 
-      <div>
+      <div className="form">
         <div>
           <label htmlFor="name">Name: </label>
           <input type="text" id="name" onChange={(e) => setName(e.target.value.toLowerCase())} />
@@ -43,17 +43,19 @@ const Search = ({ students }: { students: Student[] }) => {
       </div>
 
       <h2>Studenci:</h2>
-      <ul className='flex-list'>
-        {students
-          .filter((student) =>
-            student.name.toLowerCase().includes(name)
-            && tags.every((tag) => student.tags?.find(studentTag => studentTag.startsWith(tag)))
-            && !subjects.find((subject) => !student.subjects?.includes(subject))
-            && student.description.includes(description)
-          ).map((student, i) => <li key={i}><StudentCard student={student} /></li>)}
-      </ul>
+      <div className="wrapper">
+        <ul className='flex-list'>
+          {students
+            .filter((student) =>
+              student.name.toLowerCase().includes(name)
+              && tags.every((tag) => student.tags?.find(studentTag => studentTag.startsWith(tag)))
+              && !subjects.find((subject) => !student.subjects?.includes(subject))
+              && student.description.includes(description)
+            ).map((student, i) => <li key={i}><StudentCard student={student} /></li>)}
+        </ul>
+      </div>
     </>
   );
 };
 
-export default Search;
+export default Students;
