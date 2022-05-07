@@ -15,7 +15,10 @@ const SendMessage = ({ getRecepient }: { getRecepient: (type: string, name: stri
           <h2> Wyślij wiadomość do:</h2>
           <h3>{type} {recepient.name}</h3>
 
-          <form className="form">
+          <form className="form" onSubmit={(e) => {
+            e.preventDefault();
+            window.history.back();
+          }}>
             <div>
               <label htmlFor="subject">Temat</label>
               <input type="text" id="subject" />
