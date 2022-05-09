@@ -37,13 +37,27 @@ const App = () => {
     return null;
   }
 
+  const getRandomInt = (max: number) => {
+    return Math.floor(Math.random() * max);
+  }
+
   useEffect(() => {
-    fetch('api/state.json')
-      .then(response => response.json())
-      .then(response => {
-        setStudents(response.students);
-        setGroups(response.groups)
-      });
+    (async () => {
+      const response = await fetch('/piw/lab3/api/state.json');
+      const { students, groups } = await response.json();
+
+      setStudents(students);
+      setGroups(groups);
+
+      let images = await fetch(`https://picsum.photos/v2/list?page=${getRandomInt(33)}&limit=${students.length}`);
+      let images2 = await images.json();
+
+      const studentsWithImg = students.map((student: any, i: any) => (
+        { ...student, imageUrl: `https://picsum.photos/id/${images2[i]['id']}/150` }
+      ));
+
+      setStudents(studentsWithImg);
+    })();
   }, []);
 
   return (
