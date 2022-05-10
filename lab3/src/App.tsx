@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { Route, Routes, Link, HashRouter } from 'react-router-dom';
 import './App.css';
 import Students from './pages/Students';
@@ -12,7 +12,7 @@ import StudentDetails from './pages/StudentDetails';
 import Header from './components/Header';
 import User from './types/User';
 import UserContext from './contexts/UserContext';
-
+import { FavouritesContext, reducer, State } from './contexts/FavouritesContext';
 
 
 // TODO: remove duplicated state
@@ -30,15 +30,28 @@ const App = () => {
     localStorage.removeItem('user');
   }
 
-  // check if user in localstorage
+  // read things from localstorage
   useEffect(() => {
+    // user
     const userItem = localStorage.getItem('user');
     if (userItem) {
       const localUser = JSON.parse(userItem);
       if (localUser)
         login(localUser.email);
     }
+
+    // favourites
+    const favouritesItem = localStorage.getItem('favourites');
+    if (favouritesItem) {
+      const favourites = JSON.parse(favouritesItem);
+      if (favourites) {
+        dispatch({ type: 'setFavourites', payload: favourites.favourites });
+      }
+    }
   }, [])
+
+  const initialState = { favourites: [] };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const [students, setStudents] = useState<Student[]>([]);
 
@@ -106,27 +119,28 @@ const App = () => {
 
   return (
     <UserContext.Provider value={[user, login, logout]}>
-      <div className='App'>
-        <HashRouter>
-          <Header />
-
-          <Routes>
-            <Route path="/">
-              <Route index element={<Students students={students} />} />
-              <Route path="students">
+      <FavouritesContext.Provider value={[state, dispatch]}>
+        <div className='App'>
+          <HashRouter>
+            <Header />
+            <Routes>
+              <Route path="/">
                 <Route index element={<Students students={students} />} />
-                <Route path="add" element={<StudentAdd addStudent={addStudent} />} />
-                <Route path=":studentId" element={<StudentDetails getStudent={getStudent} />} />
+                <Route path="students">
+                  <Route index element={<Students students={students} />} />
+                  <Route path="add" element={<StudentAdd addStudent={addStudent} />} />
+                  <Route path=":studentId" element={<StudentDetails getStudent={getStudent} />} />
+                </Route>
+                <Route path="groups">
+                  <Route index element={<Groups groups={groups} />} />
+                  <Route path="add" element={<GroupAdd students={students} addGroup={addGroup} />} />
+                </Route>
+                <Route path="sendmessage/:recepientType/:recepientName" element={<SendMessage getRecepient={getRecepient} />} />
               </Route>
-              <Route path="groups">
-                <Route index element={<Groups groups={groups} />} />
-                <Route path="add" element={<GroupAdd students={students} addGroup={addGroup} />} />
-              </Route>
-              <Route path="sendmessage/:recepientType/:recepientName" element={<SendMessage getRecepient={getRecepient} />} />
-            </Route>
-          </Routes>
-        </HashRouter>
-      </div>
+            </Routes>
+          </HashRouter>
+        </div>
+      </FavouritesContext.Provider>
     </UserContext.Provider>
   );
 };
