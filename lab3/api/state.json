@@ -1,0 +1,118 @@
+{
+  "students": [
+    {
+      "id": 0,
+      "name": "Basia",
+      "email": "barbara@gmail.com",
+      "description": "Interested in functional programming and type systems.",
+      "tags": [
+        "functional programming",
+        "type systems",
+        "programming language research"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "X Æ A-Xii",
+      "email": "techpriest@mechanicus.terra",
+      "description": "Even in death I serve the Omnissiah.",
+      "tags": [
+        "omnissiah",
+        "adeptus mechanicus",
+        "the flesh is weak"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Marcel",
+      "email": "marcel@mguzik.eu",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "Miłosz",
+      "email": "mimsowy@wp.pl",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "name": "Maciej",
+      "email": "byczax@byczko.pl",
+      "description": ""
+    },
+    {
+      "id": 5,
+      "name": "Bartosz",
+      "email": "qucker@gmail.com",
+      "description": ""
+    }
+  ],
+  "groups": [
+    {
+      "id": 0,
+      "name": "Rozpoznawanie sygnalizacji świetlnej",
+      "subject": "Rozpoznawanie i przetwarzanie obrazów",
+      "size": 2,
+      "members": [
+        {
+          "id": 4,
+          "name": "Marcel",
+          "email": "marcel@mguzik.eu",
+          "description": ""
+        },
+        {
+          "id": 5,
+          "name": "Miłosz",
+          "email": "mimsowy@wp.pl",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "PACAN",
+      "subject": "Projekt grupowy",
+      "size": 4,
+      "members": [
+        {
+          "id": 4,
+          "name": "Marcel",
+          "email": "marcel@mguzik.eu",
+          "description": ""
+        },
+        {
+          "id": 5,
+          "name": "Miłosz",
+          "email": "mimsowy@wp.pl",
+          "description": ""
+        },
+        {
+          "id": 6,
+          "name": "Maciej",
+          "email": "byczax@byczko.pl",
+          "description": ""
+        },
+        {
+          "id": 7,
+          "name": "Bartosz",
+          "email": "qucker@gmail.com",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Monada to po prostu monoid w kategorii endofunktorów",
+      "subject": "Teoria kategorii dla programistów",
+      "size": 6,
+      "members": [
+        {
+          "id": 1,
+          "name": "Marcel",
+          "email": "marcel@mguzik.eu",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}
