@@ -3,9 +3,11 @@ type Student = {
     name: string,
     email: string,
     description: string,
-    tags?: string[]
+    tags?: string[],
     // TODO: replace with enums
-    subjects?: string[]
+    subjects?: string[],
+    imageUrl?: string
+    thumbUrl?: string
 };
 
 export default Student;

@@ -8,6 +8,7 @@ import Student from './types/Student';
 import Group from './types/Group';
 import GroupAdd from './pages/GroupAdd';
 import SendMessage from './pages/SendMessage';
+import StudentDetails from './pages/StudentDetails';
 
 
 // TODO: remove duplicated state
@@ -37,6 +38,18 @@ const App = () => {
     return null;
   }
 
+  const getStudent = (studentId: string) => students.find(s => s.id === parseInt(studentId)) || null;
+
+  const addStudent = (student: Omit<Student, 'id'>) => {
+    setStudents([...students, { id: nextStudentId, ...student }]);
+    setNextStudentId(nextGroupId + 1);
+  }
+
+  const addGroup = (group: Omit<Group, 'id'>) => {
+    setGroups([...groups, { id: nextGroupId, ...group }]);
+    setNextGroupId(nextGroupId + 1);
+  }
+
   const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * max);
   }
@@ -53,7 +66,11 @@ const App = () => {
       let images2 = await images.json();
 
       const studentsWithImg = students.map((student: any, i: any) => (
-        { ...student, imageUrl: `https://picsum.photos/id/${images2[i]['id']}/150` }
+        {
+          ...student,
+          imageUrl: `https://picsum.photos/id/${images2[i]['id']}/400`,
+          thumbUrl: `https://picsum.photos/id/${images2[i]['id']}/150`,
+        }
       ));
 
       setStudents(studentsWithImg);
@@ -68,26 +85,24 @@ const App = () => {
         <nav>
           <Link to="/">Studenci</Link>
           <Link to="/groups">Grupy</Link>
-          <Link to="/add">Dodaj studenta</Link>
+          <Link to="/students/add">Dodaj studenta</Link>
           <Link to="/groups/add">Dodaj grupę</Link>
         </nav>
 
         <Routes>
-          <Route path="/" element={<Students students={students} />} />
-          <Route path="/groups" element={<Groups groups={groups} />} />
-          <Route path="/add" element={
-            <StudentAdd addStudent={(student) => {
-              setStudents([...students, { id: nextStudentId, ...student }]);
-              setNextStudentId(nextGroupId + 1);
-            }} />
-          } />
-          <Route path="/groups/add" element={
-            <GroupAdd students={students} addGroup={(group) => {
-              setGroups([...groups, { id: nextGroupId, ...group }]);
-              setNextGroupId(nextGroupId + 1);
-            }} />
-          } />
-          <Route path="/sendmessage/:recepientType/:recepientName" element={<SendMessage getRecepient={getRecepient} />} />
+          <Route path="/">
+            <Route index element={<Students students={students} />} />
+            <Route path="students">
+              <Route index element={<Students students={students} />} />
+              <Route path="add" element={<StudentAdd addStudent={addStudent} />} />
+              <Route path=":studentId" element={<StudentDetails getStudent={getStudent} />} />
+            </Route>
+            <Route path="groups">
+              <Route index element={<Groups groups={groups} />} />
+              <Route path="add" element={<GroupAdd students={students} addGroup={addGroup} />} />
+            </Route>
+            <Route path="sendmessage/:recepientType/:recepientName" element={<SendMessage getRecepient={getRecepient} />} />
+          </Route>
         </Routes>
       </HashRouter>
 

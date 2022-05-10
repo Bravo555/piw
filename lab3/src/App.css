@@ -43,11 +43,26 @@
   border-radius: 1em;
 }
 
+.card_title {
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.card_description {
+  margin: 0.5em;
+}
+
 .card > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card a {
   text-decoration: none;
 }
 
-.card > a:hover {
+.card a:hover {
   text-decoration: underline;
 }
 
