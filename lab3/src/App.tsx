@@ -14,6 +14,32 @@ import User from './types/User';
 import UserContext from './contexts/UserContext';
 import { FavouritesContext, reducer, State } from './contexts/FavouritesContext';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import * as firebaseui from 'firebaseui';
+import firebase from 'firebase/compat/app';
+import 'firebaseui/dist/firebaseui.css';
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD_IuPKuuFZSiSW7V_fRfnmUBcFXM8DvKQ",
+  authDomain: "piwo-21a86.firebaseapp.com",
+  projectId: "piwo-21a86",
+  storageBucket: "piwo-21a86.appspot.com",
+  messagingSenderId: "53709078679",
+  appId: "1:53709078679:web:733cde8b6009241b2c69d2",
+  measurementId: "G-C280BLS32B"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+
 
 // TODO: remove duplicated state
 const App = () => {
@@ -22,12 +48,12 @@ const App = () => {
   const login = (email: string) => {
     const user = { email };
     setUser(user);
-    localStorage.setItem('user', JSON.stringify(user));
+    // localStorage.setItem('user', JSON.stringify(user));
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
+    app.auth().signOut().then(() => setUser(null));
+    // localStorage.removeItem('user');
   }
 
   // read things from localstorage
@@ -49,6 +75,48 @@ const App = () => {
       }
     }
   }, [])
+
+  useEffect(() => {
+    app.auth().onAuthStateChanged((user) => {
+      const authContainer = document.getElementById('firebaseui-auth-container');
+      if (user) {
+        console.log('logging in!');
+        if (user.email) login(user.email);
+        if (authContainer) authContainer.hidden = true;
+      } else {
+        console.log('logged out');
+        logout();
+        if (authContainer) authContainer.hidden = false;
+        ui.start('#firebaseui-auth-container', {
+          callbacks: {
+            signInSuccessWithAuthResult: (authResult) => {
+              console.log(authResult.user);
+              return false;
+            },
+          },
+          signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          ],
+          signInFlow: 'popup',
+        });
+      }
+    });
+
+    ui.start('#firebaseui-auth-container', {
+      callbacks: {
+        signInSuccessWithAuthResult: (authResult) => {
+          console.log(authResult.user);
+          return false;
+        },
+      },
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      ],
+      signInFlow: 'popup',
+    });
+  }, []);
 
   const initialState = { favourites: [] };
   const [state, dispatch] = useReducer(reducer, initialState);

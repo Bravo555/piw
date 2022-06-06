@@ -26,6 +26,7 @@ const Header = () => {
     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end', alignItems: 'baseline', gap: '1rem' }}>
       <span>{user?.email || 'Gość'}</span>
       {user ? <button onClick={logout}>Wyloguj się</button> : loginForm}
+      <div id="firebaseui-auth-container"></div>
     </div>
 
   return (
